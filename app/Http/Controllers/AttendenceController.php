@@ -20,6 +20,8 @@ class AttendenceController extends Controller
         $timezone = new DateTime("now", new DateTimeZone('Asia/Kathmandu') );
         $now = $timezone->format('Y-m-d H:i:s');
         $employee = Employee::find($request->get('employeeid'));
+
+		
         $status = Attendence::where('employee_id', $employee->id)->orderBy('created_at','desc')->first();
         return view('welcome', compact('employee','now', 'status'));
     }
