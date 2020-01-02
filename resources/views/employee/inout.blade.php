@@ -77,6 +77,11 @@
         <div class="card-body">
             <form method="post" action="{{route('punch_inout')}}">
                 {{csrf_field()}}
+				@if($errors->any())
+					<div class="alert alert-danger" role="alert">
+						{{$errors->first()}}
+					</div>
+				@endif
                 <div class="form-group"><label>Your Employee ID is</label>
                     <input type="text" name="employeeid" placeholder=" eg. CLB1B226BD" class="form-control">
                     <button class="btn btn-success float-right" type="submit">

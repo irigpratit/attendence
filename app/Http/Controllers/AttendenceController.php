@@ -21,7 +21,7 @@ class AttendenceController extends Controller
         $now = $timezone->format('Y-m-d H:i:s');
         $employee = Employee::find($request->get('employeeid'));
 		if(!isset($employee)){
-			return back()->withErrors(['msg', 'Invalid Employee Id']);
+			return back()->withErrors('Invalid Employee');
 		}
 		
         $status = Attendence::where('employee_id', $employee->id)->orderBy('created_at','desc')->first();
